@@ -1,7 +1,5 @@
 \documentclass[11pt,center]{beamer}
 
-\usepackage[utf8]{inputenc}
-\usepackage{default}
 \usepackage{fancybox}
 \usepackage{graphics}
 \usepackage{spot}
@@ -9,7 +7,6 @@
 \usepackage{minibox}
 \usetikzlibrary{arrows}
 \usepackage[absolute,overlay]{textpos}
-\usepackage{extrabeamercmds}
 \usetheme{metropolis}
 
 \definecolor{light-gray}{gray}{0.86}
@@ -19,8 +16,6 @@
 \date{\today}
 
 \begin{document}
-	%intro clip cam vs. dvs
-	\fullFrameMovie[noloop]{../clips/pencil-balance_clip.mp4}{../pics/pencil-balancer.jpg}{pencil balancer}
 
 	\begin{frame}%{\maketitle}
 		\titlepage
@@ -177,7 +172,6 @@
 	\end{frame}
 
 \section{Dynamic Vision Sensor}
-	\fullFrameMovie[noloop]{../clips/rotdisk-cam-dvs.mp4}{../pics/rotdisk-cam-dvs.png}{camera vs. dvs}
 
 	\begin{frame}{From frames to events}
 		\begin{block}{Normal camera}
@@ -357,6 +351,5 @@
 
 	\end{frame}
 
-	\fullFrameMovie[noloop]{../clips/dvs_copter.mp4}{../pics/dvs_copter.png}{dvs copter}
 
 \end{document}
