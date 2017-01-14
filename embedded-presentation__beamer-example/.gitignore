@@ -3,7 +3,9 @@
 *.backup
 *.dvi
 *.log
-
+*.aux
+*.out
+*.toc
 
 
 
