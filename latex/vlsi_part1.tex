@@ -197,13 +197,14 @@
 \fi
 \begin{frame} {Σύνολα από SDR}
   \begin{block}{Ερώτηση}
-    Παρατηρούμε μια αλληλουχία από SDR. Πώς θα μάθουμε αν το ξεχωριστό SDR Β το έχουμε ξαναδεί;
+    Παρατηρούμε μια αλληλουχία από SDR. Πώς θα μάθουμε αν το ξεχωριστό SDR Β το έχουμε ξαναδεί; Και... γρήγορα;
   \end{block}
 
   \pause
   \vspace{1em}
-  Εύκολο! \\
-  Θα συγκίνουμε το Β με την \alert{ένωση} όλων των SDR
+  \begin{block}{Εύκολο!}
+	Θα συγκίνουμε το Β με την \alert{ένωση} όλων των SDR
+  \end{block}
 
   \pause
   \vspace{0.5em}
@@ -211,8 +212,9 @@
   \includegraphics[width=.5\textwidth]{../pics/balance}
 \end{frame}
 
+\section{Hierarchical Temporal Memory}
 
-\begin{frame}{Neuron model}
+\begin{frame}{Μοντέλο νευρώνα}
   %Neuron with context
   %Minicolumn, layer: predictions, inhibitions
   \centering
@@ -221,38 +223,82 @@
   feedforward = receptive field
 \end{frame}
 
-\begin{frame}{Network model}
+\begin{frame}{Μοντέλο δικτύου}
   \centering
-  \includegraphics[width=\textwidth]{../pics/minicolumn}
+  \includegraphics[width=.8\textwidth]{../pics/minicolumn}
 
   \vspace{-0.5em}
-  \begin{block}{Συνδέσεις}
-	Νευρώνες στο ίδιο minicolumn:
-	\vspace{-0.5em}
-    \begin{itemize}
-      \item Tο ίδιο receptive field
-      \item Μεταξύ τους inhibition
-      \item[] $\rightarrow$ Winner-takes-all!
-    \end{itemize}
+  \small{
+  \begin{columns}
+	\column{0.55\textwidth}
+	\begin{block}{Συνάψεις}
+	  Νευρώνες στο ίδιο minicolumn
+	  \vspace{-0.5em}
+	  \begin{itemize}
+		\item Tο ίδιο receptive field
+		\item Μεταξύ τους inhibition
+		\item[] $\rightarrow$ Winner-takes-all!
+	  \end{itemize}
 
-	Μεταξύ διαφορετικών minicolumns:
-	\vspace{-0.5em}
-	\begin{itemize}
-	  \item Context
-	  \item Συνολικό inhibition
-	\end{itemize}
-  \end{block}
+	  \vspace{-0.5em}
+	  Μεταξύ διαφορετικών minicolumns
+	  \vspace{-0.5em}
+	  \begin{itemize}
+		\item Context
+		\item Ολικό (ή τοπικό...) inhibition
+	  \end{itemize}
+	\end{block}
+
+	\column{0.45\textwidth}
+	\begin{block}{Χαρακτηριστικά συνάψεων}
+	  \vspace{-0.5em}
+	  \begin{itemize}
+		\item \alert{Υπάρχουν ή όχι}. Δε χρησιμοποιούνται βάρη.
+		\item \em{Μονιμότητα}: μια σύναψη με μικρή μονιμότητα μπορεί να απενεργοποιηθεί εύκολα
+		\item Αλγόριθμοι μάθησης τύπου STDP
+	  \end{itemize}
+	\end{block}
+  \end{columns}
+  }
 \end{frame}
 
+\begin{frame}{Scalar Encoder}
+  \only<1>{ \includegraphics[width=1.05\textwidth]{../pics/enc1} }
+  \only<2>{ \includegraphics[width=1.05\textwidth]{../pics/enc2} }
+  \only<3>{ \includegraphics[width=1.05\textwidth]{../pics/enc3} }
 
-\begin{frame}{Encoder}
+  \begin{block}{Encoder}
+    Οι ``αισθητήρες'' ενός συστήματος HTM. Εισάγουν τα ερεθίσματα του κόσμου.
+  \end{block}
+
+\end{frame}
+\begin{frame}{Text Encoder -- cortical.io}
+  \includegraphics[width=1.05\textwidth]{../pics/enc-cortical}
+\end{frame}
+
+\section{Βασικές λειτουργίες HTM}
+\begin{frame}{Spatial Pooler}
+  \begin{block}{Spatial pooler}
+	Επίπεδο HTM που κανονικοποιεί τα εισερχόμενα SDR, ρυθμίζοντας το μέγεθος, το sparsity ή την τοπολογία.
+	Οφείλει να διατηρήσει τις \em{ομοιότητες}.
+	\begin{itemize}
+	  \item Δεν ενδιαφέρουν τα minicolumns εδώ
+	  %\item Κάθε νευρώνας συνδέεται τυχαία με μέρος της εισόδου
+	  %\item Οι νευρώνες που ενεργοποιούνται περισσότερο από την είσοδο νικούν
+	\end{itemize}
+  \end{block}
+
 \end{frame}
 
 \begin{frame}{Spatial Pooler}
+  \only<1>{ \includegraphics[width=1\textwidth]{../pics/spatpool} }
+  \only<2>{ \includegraphics[width=1.07\textwidth]{../pics/sp1} }
+  \only<3>{ \includegraphics[width=1.07\textwidth]{../pics/sp2} }
 \end{frame}
 
 \begin{frame}{Sequence memory}
-  Example from paper
+  \only<1>{ \includegraphics[width=1\textwidth]{../pics/sequence-learning-big} }
+  \only<2>{ \includegraphics[width=1.07\textwidth]{../pics/sequence2} }
 \end{frame}
 
 \end{document}
