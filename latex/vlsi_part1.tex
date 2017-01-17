@@ -28,15 +28,16 @@
   %Τα δεδομένα αλλάζουν. Παράδειγμα ρομπότ;
   \centering
   \includegraphics[width=0.8\textwidth]{../pics/world-man-interaction}
-  \only<1-3>{\visible<2-3>{
-	\begin{itemize}
-	  \item Ζει μέσα στον κόσμο
+  \only<1-6>{\visible<2-6>{
+	\begin{itemize}[<+(1)->]
+	  \item Βλέπει κι ακούει τον κόσμο και δρα πάνω του
+	  \item Δέχεται \alert{αλληλουχίες} ερεθισμάτων και ανιχνεύει \alert{συνεπακόλουθα}
 	  \item Μαθαίνει τη δομή και τις βασικές αρχές του
 	  \item ``Κοινή λογική''
-	  \item<3>[] Και αυτά με τρόπο \em{unsupervised}, πραγματοποιώντας διαρκώς \em{προβλέψεις}.
+	  \item[] Και αυτά με τρόπο \em{unsupervised}, πραγματοποιώντας διαρκώς \em{προβλέψεις}.
 	\end{itemize}
   }}
-  \only<4->{ \includegraphics[width=0.65\textwidth]{../pics/angular_momentum} }
+  \only<7->{ \includegraphics[width=0.65\textwidth]{../pics/angular_momentum} }
 \end{frame}
 
 \begin{frame}{Beyond the static \& supervised}
@@ -48,7 +49,7 @@
 	  \item Το μοντέλο πρέπει ή να είναι γενικό ή να προσαρμόζεται
 	  \item Δεν είναι δυνατό να δημιουργηθούν labeled datasets -- υπερβολικός κόπος ή άγνοια
 	  \pause
-	  \item Τα δεδομένα έρχονται σε χρονική αλληλουχία (χρονοσειρές) \\ $\rightarrow$ Σχέσεις αιτιατότητας
+	  \item Τα δεδομένα έρχονται σε χρονική αλληλουχία \\ $\rightarrow$ Αιτιώδεις σχέσεις
 	\end{itemize}
   \end{block}
 
@@ -117,7 +118,7 @@
   \end{block}
 \end {frame}
 
-\begin{frame}{Μοντελοποίηση μάθησης neocortex}
+\begin{frame}{Μοντελοποίηση λειτουργίας neocortex}
   Ανάγκη \alert{κατανόησης}
   \begin{itemize}
 	\item Ο εγκέφαλος διαμορφώθηκε μέσω βιολογικής εξέλιξης και υπάγεται σε βιολογικούς περιορισμούς
@@ -127,13 +128,13 @@
 	Κάποιες παρατηρήσεις νευρολογίας neocortex:
 	\begin{itemize}[]
 	  \item<2-> Διδιάστατη μορφή χωρισμένη σε \alert{επίπεδα}
-	  \item<3-> Δομή \alert{ομοιόμορφη} σε όλο το neocortex
+	  \item<3-> Δομή \alert{ομοιόμορφη} σε όλη του την έκταση
 		\begin{itemize} \item[--] Κάθε περιοχή λύνει το ίδιο πρόβλημα με τον ίδιο τρόπο \end{itemize}
 	  \item<4-> Οι περιοχές ενώνονται \alert{ιεραρχικά}
-		\begin{itemize} \item[--] Ψηλότερα επίπεδα => πιο αφηρημένες ιδέες \end{itemize}
+		\begin{itemize} \item[--] Ψηλότερα επίπεδα => πιο αφηρημένες έννοιες \end{itemize}
 	  \item<5-> Οι νευρώνες ενεργοποιούνται σποραδικά και πολύ σπάνια
 		\begin{itemize} \item[--] Διάνυσμα κατάστασης: \spot<7>{\alert<5-6>{αραιό}} \end{itemize}
-	  \item<6-> Συνεχής \alert{πρόβλεψη} του μέλλοντος με βάση τις αισθήσεις και τις μυϊκές εντολές
+	  \item<6-> Συνεχής \alert{πρόβλεψη} του μέλλοντος
 	\end{itemize}
   }
 \end {frame}
@@ -141,8 +142,8 @@
 \begin{frame}{Sparse Distributed Representation}
   \begin{block}{``Δομή δεδομένων του εγκεφάλου''}
 	\begin{itemize}
-	  \item Μεγάλο, αραιό διάνυσμα
-	  \item Κάθε bit έχει \alert{νόημα}
+	  \item Μεγάλο, αραιό, δυαδικό διάνυσμα
+	  \item Κάθε bit έχει σημασιολογικό \alert{νόημα}
 	\end{itemize}
   \end{block}
 \end{frame}
@@ -159,22 +160,22 @@
   \end{block}
   \pause
   \centering
-  \large{Πώς μπορούμε να συνδυάσουμε/συγκρίνουμε 2 SDR?}
+  \vspace{1em}
+  \large{Πώς μπορούμε να συνδυάσουμε/συγκρίνουμε δυο SDR?}
 \end{frame}
 
 \begin{frame}{Ταιριάζοντας SDRs}
   \only<1>{
-  Έστω 2 SDR, το Α και το Β, ως boolean vectors:
-  \begin{description}[Overlap set($w_b,b$)]
+  Έστω 2 SDR, το Α και το Β, ως δυαδικά διανύσματα:
+  \begin{description}[Overlap set($b$)]
     \item[Union] $A | B$
     \item[Overlap] $A \& B$
     \item[Overlap score] Το μέτρο του overlap
-    \item[Overlap set($w_b,b$)] Το σύνολο των SDR με πληθυσμό $w_b$ και overlap score $>b$ με το Α.
+    \item[Overlap set($b$)] Το σύνολο των SDR που έχουν overlap score $>b$ σε σχέση με το Α.
+    \vspace{1em}
+    \item[Matching($\theta$)] Το Α και το Β ταιριάζουν, αν το overlap score τους είναι μεγαλύτερο από $\theta$
   \end{description}}
   \only<2->{
-  \begin{description}[Matching($\theta$)]
-    \item[Matching($\theta$)] Το Α και το Β ταιριάζουν, αν το overlap score τους είναι μεγαλύτερο από $\theta$
-  \end{description}
   \begin{itemize}
 	\item Έστω ότι Β = Α + 30\% θόρυβο. Τότε το εκτιμώμενο overlap score είναι $30\% \cdot w$. Αν $\theta = 30\% \cdot w$, τα Α και Β ταιριάζουν.
 	\item \alert{Ευρωστία} στο θόρυβο!
@@ -203,7 +204,7 @@
   \pause
   \vspace{1em}
   \begin{block}{Εύκολο!}
-	Θα συγκίνουμε το Β με την \alert{ένωση} όλων των SDR
+	Θα συγκρίνουμε το Β με την \alert{ένωση} όλων των SDR
   \end{block}
 
   \pause
@@ -267,11 +268,12 @@
   \only<2>{ \includegraphics[width=1.05\textwidth]{../pics/enc2} }
   \only<3>{ \includegraphics[width=1.05\textwidth]{../pics/enc3} }
 
+  \only<1>{
   \begin{block}{Encoder}
     Οι ``αισθητήρες'' ενός συστήματος HTM. Εισάγουν τα ερεθίσματα του κόσμου.
-  \end{block}
-
+  \end{block}}
 \end{frame}
+
 \begin{frame}{Text Encoder -- cortical.io}
   \includegraphics[width=1.05\textwidth]{../pics/enc-cortical}
 \end{frame}
