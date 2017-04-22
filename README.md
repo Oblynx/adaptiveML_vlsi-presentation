@@ -9,3 +9,5 @@
 
 The material is in **Greek**. The 2 pdfs are a presentation and a report. 
 The report complements the presentation and could be read alongside if needed.
+
+This presentation was made for the VLSI course at the Aristotle University of Thessaloniki ECE.
